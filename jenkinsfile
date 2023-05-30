@@ -25,7 +25,10 @@ pipeline
                 stage('Test2 on slave machine')
                  {
                    agent {label " ubuntu-machine"}
-                   steps {echo "tested on slave machine" }
+                   steps {
+                    git branch: 'main', credentialsId: 'gitacc', url: 'https://github.com/nazrulhmw/jenkins-pipeline.git'
+                    echo "tested on slave machine" 
+                     }
                  }
            }
           }
